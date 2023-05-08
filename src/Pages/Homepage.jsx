@@ -36,7 +36,7 @@ const cursos = [
 export default function Homepage() {
   return (
     <div>
-      <div className="container flex grid-cols-3 justify-center gap-x-8 gap-y-4">
+      <div className="container h-screen flex grid-cols-3 justify-center gap-x-8 gap-y-4">
         {cursos.map((cursos) => (
           <Card key ={cursos.id} cursos={cursos} />
         ))}
