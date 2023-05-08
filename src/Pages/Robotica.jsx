@@ -23,6 +23,26 @@ const robotica = {
       nombre: "Tarea 1: Simulación Semáforo",
       link: "https://drive.google.com/file/d/1U9H-YefUm6Sk6oVWnHcTp7XiwzlLaK7F/view",
     },
+    {
+      id: "4",
+      nombre: "Clase 3: Arduino y programación 2",
+      link: "https://drive.google.com/file/d/1beYmRf4oIwi00Rc5taO0rQjzSiLZifqR/view",
+    },
+    {
+      id: "5",
+      nombre: "Clase 4: Misceláneos de arduino",
+      link: "https://drive.google.com/file/d/1LmN5m33kdn4pmK--tHZH6kDihZkgz2SD/view",
+    },
+    {
+      id: "6",
+      nombre: "Tarea 2: Máquinas de estados finitos ",
+      link: "https://drive.google.com/file/d/1U7n_WdJMrA95Q5TtIGniXSp5xlU-GIW6/view",
+    },
+    {
+      id: "6",
+      nombre: "Clase 5: Cinemática del robot",
+      link: "https://drive.google.com/file/d/1UVxpznU9vwBPhOzR1epZOSXtFUNACo0H/view",
+    },
   ],
 };
 
@@ -31,7 +51,12 @@ export default function Robotica() {
     <>
       <div className="grid grid-cols-2">
         <div className="grid grid-cols-1 text-3xl pb-4 justify-start">
-          <h1 className="pb--3">{robotica.title} <p className="text-base justify-start pt-4">{robotica.description}</p></h1>
+          <h1 className="pb--3">
+            {robotica.title}{" "}
+            <p className="text-base justify-start pt-4">
+              {robotica.description}
+            </p>
+          </h1>
         </div>
 
         <div className="text-3xl pb-4 flex justify-start">
