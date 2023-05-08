@@ -11,7 +11,7 @@ const cursos = [
       "Curso dirigido a los estudiantes de Ingeniería Ejecución en Mecánica de la Usach",
     img: "https://www.bbva.ch/wp-content/uploads/2021/10/22.-recurso_avances-en-robotica-scaled-e1634282937466-1024x686.jpg",
     acceso: "True",
-    ruta: "/cursos/robotica"
+    ruta: "/robotica"
   },
   {
     id: "2",
@@ -20,7 +20,7 @@ const cursos = [
       "Material creado por el ayudante de la asignatura Métodos Numéricos de Ingeniería Mecánica (DIMEC-USACH)",
     img: "https://1.bp.blogspot.com/-w6qKoNevHNA/X5r-0hOG_8I/AAAAAAAAQbg/3J-0Oj89KP4k158Z2DMAzmf2TlR6xPVrwCLcBGAsYHQ/s700/que-son-metodos-numericos-ecuaciones-de-calculo.png",
     acceso: "False",
-    ruta : "/cursos/metodosnumericos"
+    ruta : "/metodosnumericos"
   },
   {
     id: "3",
@@ -29,7 +29,7 @@ const cursos = [
       "Material creado por uno de los ayudantes de la asignatura que se imparte en el módulo básico para Ingeniería (MBI-USACH)",
     img: "https://1.bp.blogspot.com/-SeTDWlvi_GQ/X5sAJxQPjqI/AAAAAAAAQbs/kSfvp9wSpfkiVjIi6xYYpLq0g_fDQ0kRQCLcBGAsYHQ/s700/que-son-metodos-numericos-integrales-complejas.png",
     acceso: "False",
-    ruta : "/cursos/calculo3"
+    ruta : "/calculo3"
   },
 ];
 
