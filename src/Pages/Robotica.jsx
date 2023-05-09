@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { useState, useEffect } from "react";
+import { request } from "graphql-request";
+import { FidgetSpinner } from "react-loader-spinner";
 const robotica = {
   id: "1",
   title: "Tópico de la especialidad: Robótica",
@@ -47,39 +49,85 @@ const robotica = {
 };
 
 export default function Robotica() {
+  const [contenidoCursos, setCursos] = useState(null);
+
+  useEffect(() => {
+    const fetchAPI = async () => {
+      const { contenidoCursos } = await request(
+        "https://api-sa-east-1.hygraph.com/v2/clhfpz2k10p1s01ugcuxqaiym/master",
+        `{
+        contenidoCursos {
+          id
+          img
+          title
+          clases
+        }
+      }`
+      );
+
+      setCursos(contenidoCursos);
+      console.log(contenidoCursos[0]);
+    };
+
+    fetchAPI();
+  }, []);
+
   return (
     <>
-      <div className="grid grid-cols-2">
-        <div className="grid grid-cols-1 text-3xl pb-4 justify-start">
-          <h1 className="pb--3">
-            {robotica.title}{" "}
-            <p className="text-base justify-start pt-4">
-              {robotica.description}
-            </p>
-          </h1>
-        </div>
+      {contenidoCursos ? (
+        <div>
+          <div className="grid grid-cols-2">
+            <div className="grid grid-cols-1 text-3xl pb-4 justify-start">
+              <h1 className="pb--3">
+                {contenidoCursos[0].title}{" "}
+                <p className="text-base justify-start pt-4">
+                  {robotica.description}
+                </p>
+              </h1>
+            </div>
 
-        <div className="text-3xl pb-4 flex justify-start">
-          <img
-            className="mx-auto justify-center h-50 w-90 pb-4"
-            src={robotica.img}
-            alt="Sunset in the mountains"
-          />
-        </div>
-      </div>
+            <div className="text-3xl pb-4 flex justify-start">
+              <img
+                className="mx-auto justify-center h-50 w-90 pb-4"
+                src={contenidoCursos[0].img}
+                alt="Sunset in the mountains"
+              />
+            </div>
+          </div>
+          <p className="text-3xl font-bold flex justify-start pb-4">Recursos</p>
 
-      <p className="text-3xl font-bold flex justify-start pb-4">Recursos</p>
-      {robotica.clases.map((clase) => (
-        <ul className="pb-1 flex justify-start" key={clase.id}>
-          <Link
-            className="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-            to={clase.link}
-            target="_blank"
-          >
-            {clase.nombre}
-          </Link>
-        </ul>
-      ))}
+          {contenidoCursos[0].clases.map((clase, index) => (
+            <ul className="pb-1 flex justify-start" key={`${clase.label}${index}`}>
+              <Link
+                className="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                to={clase.link}
+                target="_blank"
+              >
+                {clase.nombre}
+              </Link>
+            </ul>
+          ))}
+
+
+
+        </div>
+      ) : (
+        <div className="container flex justify-center">
+          <h1>Cargando ...</h1>
+          <div>
+            <FidgetSpinner
+              visible={true}
+              height="80"
+              width="80"
+              ariaLabel="dna-loading"
+              wrapperStyle={{}}
+              wrapperClass="dna-wrapper"
+              ballColors={["#ff0000", "#00ff00", "#0000ff"]}
+              backgroundColor="#F4442E"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }

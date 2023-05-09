@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const Card = ({ cursos }) => {
+export const Card = ( {cursos} ) => {
   return (
     <>
       <Link to={cursos.ruta}>
