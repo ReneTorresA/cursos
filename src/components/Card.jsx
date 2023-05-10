@@ -11,7 +11,7 @@ export const Card = ( {cursos} ) => {
             alt="Sunset in the mountains"
           />
 
-          {cursos.acceso === True ? (
+          {cursos.acceso === "True" ? (
             <p className="text-sm text-slate-100 flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
